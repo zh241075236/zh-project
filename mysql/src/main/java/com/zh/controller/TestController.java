@@ -33,8 +33,8 @@ public class TestController {
     @GetMapping("query")
     public Response query(){
         try {
-            Page<User> userPage = userService.queryPage(new User("root","root",1));
-            Response result = Response.result(null, userPage);
+            List<User> userList = userService.queryPage(new User("root", "root", 1)).getRecords();
+            Response result = Response.result(null, userList);
             return result;
         } catch (Exception e){
             e.printStackTrace();
